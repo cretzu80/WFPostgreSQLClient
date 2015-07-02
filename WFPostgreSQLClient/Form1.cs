@@ -56,7 +56,7 @@ namespace WFPostgreSQLClient
             DataTable dt = layer.GetDatabases();
             cmbDatabases.DataSource = dt;
             cmbDatabases.DisplayMember = "datname";
-            cmbDatabases.Text = dbSelectedName;
+            cmbDatabases.SelectedText = dbSelectedName;
         }
 
         private void btnExecuteSQLStatement_Click(object sender, EventArgs e)
@@ -66,8 +66,10 @@ namespace WFPostgreSQLClient
                 //daca nu se optimizeaza executia interogarii
                 var watch = Stopwatch.StartNew();
                 // the code that you want to measure comes here
-                dgvResults.DataSource = layer.ExecuteBatch(rtSQLStatements.Text.Trim());
+                DataTable dtresult = (DataTable) layer.ExecuteBatch(rtSQLStatements.Text.Trim());
                 watch.Stop();
+                dgvResults.DataSource = null;
+                dgvResults.DataSource = dtresult;
                 lblExecTime.Text = watch.ElapsedMilliseconds.ToString() + " ms";
             }
         }
