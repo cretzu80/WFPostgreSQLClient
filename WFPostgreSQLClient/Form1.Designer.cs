@@ -36,12 +36,13 @@
             this.lblSQLStatements = new System.Windows.Forms.Label();
             this.ckOptimize = new System.Windows.Forms.CheckBox();
             this.btnExecuteSQLStatement = new System.Windows.Forms.Button();
-            this.rtResults = new System.Windows.Forms.RichTextBox();
             this.lblResults = new System.Windows.Forms.Label();
             this.lblExecutionTime = new System.Windows.Forms.Label();
             this.lblExecTime = new System.Windows.Forms.Label();
             this.lblExecTimeOpt = new System.Windows.Forms.Label();
             this.lblExecutionTimeOpt = new System.Windows.Forms.Label();
+            this.dgvResults = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).BeginInit();
             this.SuspendLayout();
             // 
             // lblPGDatabases
@@ -60,6 +61,7 @@
             this.cmbDatabases.Name = "cmbDatabases";
             this.cmbDatabases.Size = new System.Drawing.Size(169, 21);
             this.cmbDatabases.TabIndex = 1;
+            this.cmbDatabases.SelectedValueChanged += new System.EventHandler(this.cmbDatabases_SelectedValueChanged);
             // 
             // lblServer
             // 
@@ -72,10 +74,9 @@
             // 
             // lblServerDetails
             // 
-            this.lblServerDetails.AutoSize = true;
             this.lblServerDetails.Location = new System.Drawing.Point(427, 9);
             this.lblServerDetails.Name = "lblServerDetails";
-            this.lblServerDetails.Size = new System.Drawing.Size(83, 13);
+            this.lblServerDetails.Size = new System.Drawing.Size(275, 55);
             this.lblServerDetails.TabIndex = 3;
             this.lblServerDetails.Text = "<Server details>";
             // 
@@ -85,7 +86,7 @@
             this.rtSQLStatements.Name = "rtSQLStatements";
             this.rtSQLStatements.Size = new System.Drawing.Size(675, 189);
             this.rtSQLStatements.TabIndex = 4;
-            this.rtSQLStatements.Text = "";
+            this.rtSQLStatements.Text = "SELECT * FROM country;";
             // 
             // lblSQLStatements
             // 
@@ -114,14 +115,7 @@
             this.btnExecuteSQLStatement.TabIndex = 7;
             this.btnExecuteSQLStatement.Text = "Execute SQLStatement";
             this.btnExecuteSQLStatement.UseVisualStyleBackColor = true;
-            // 
-            // rtResults
-            // 
-            this.rtResults.Location = new System.Drawing.Point(27, 296);
-            this.rtResults.Name = "rtResults";
-            this.rtResults.Size = new System.Drawing.Size(675, 162);
-            this.rtResults.TabIndex = 8;
-            this.rtResults.Text = "";
+            this.btnExecuteSQLStatement.Click += new System.EventHandler(this.btnExecuteSQLStatement_Click);
             // 
             // lblResults
             // 
@@ -168,17 +162,25 @@
             this.lblExecutionTimeOpt.TabIndex = 12;
             this.lblExecutionTimeOpt.Text = "ExecutionTime";
             // 
+            // dgvResults
+            // 
+            this.dgvResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvResults.Location = new System.Drawing.Point(27, 296);
+            this.dgvResults.Name = "dgvResults";
+            this.dgvResults.Size = new System.Drawing.Size(675, 150);
+            this.dgvResults.TabIndex = 14;
+            // 
             // FrmPGClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(714, 516);
+            this.Controls.Add(this.dgvResults);
             this.Controls.Add(this.lblExecTimeOpt);
             this.Controls.Add(this.lblExecutionTimeOpt);
             this.Controls.Add(this.lblExecTime);
             this.Controls.Add(this.lblExecutionTime);
             this.Controls.Add(this.lblResults);
-            this.Controls.Add(this.rtResults);
             this.Controls.Add(this.btnExecuteSQLStatement);
             this.Controls.Add(this.ckOptimize);
             this.Controls.Add(this.lblSQLStatements);
@@ -189,7 +191,8 @@
             this.Controls.Add(this.lblPGDatabases);
             this.Name = "FrmPGClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "W";
+            this.Text = "WFP PostresSQL Client";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,12 +208,12 @@
         private System.Windows.Forms.Label lblSQLStatements;
         private System.Windows.Forms.CheckBox ckOptimize;
         private System.Windows.Forms.Button btnExecuteSQLStatement;
-        private System.Windows.Forms.RichTextBox rtResults;
         private System.Windows.Forms.Label lblResults;
         private System.Windows.Forms.Label lblExecutionTime;
         private System.Windows.Forms.Label lblExecTime;
         private System.Windows.Forms.Label lblExecTimeOpt;
         private System.Windows.Forms.Label lblExecutionTimeOpt;
+        private System.Windows.Forms.DataGridView dgvResults;
     }
 }
 
