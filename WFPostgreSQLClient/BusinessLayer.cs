@@ -14,6 +14,7 @@ namespace WFPostgreSQLClient
         internal BusinessLayer(string connectionString)
         {
             m_connectionString = connectionString;
+
         }
 
         internal DataTable GetDatabases()
