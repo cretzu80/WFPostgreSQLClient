@@ -1,0 +1,11 @@
+﻿SELECT a.datarezolvare, 0 as idmoneda, a.modoperatie, a.iddocument, a.explicatii, a.valoare, a.idsursafinanciar, 
+	a.idsursadetaliu, a.codunitate, a.codsubunitate as idsubunitate, 'I'::character(1) as operatie, a.idtipcheltuiala as tipcheltuiala, a.idtipvenit as tipvenit,
+	a.codcategorieunitate as categunitate, a.dotari, a.materiale, a.personal 
+FROM fct_incasariAll ('2009-04-01', '2015-10-01') as a
+UNION
+SELECT b.datarezolvare, 0 as idmoneda, b.modoperatie, b.iddocument, b.explicatii, b.valoare, b.idsursafinanciar, 
+	b.idsursadetaliu, b.codunitate, b.codsubunitate as idsubunitate, 'P'::character(1) as operatie, b.idtipcheltuiala as tipcheltuiala, b.idtipvenit as tipvenit,
+	b.codcategorieunitate as categunitate, b.dotari, b.materiale, b.personal 
+FROM fct_platiAll('2009-04-01', '2015-10-01')as b
+
+
